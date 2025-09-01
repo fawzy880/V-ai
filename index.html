@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Future Search</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffe7;
+      overflow: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      text-shadow: 0 0 20px #00ffe7;
+      border-bottom: 2px solid rgba(0, 255, 231, 0.4);
+    }
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    input {
+      width: 60%;
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+    select {
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #00ffe7;
+      color: #0f0c29;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffe7;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>🔮 AI Future Search 2050 🔮</header>
+  <div class="search-container">
+    <input type="text" id="query" placeholder="اكتب سؤالك هنا...">
+    <div class="controls">
+      <select id="engine">
+        <option value="google">Google</option>
+        <option value="wikipedia">Wikipedia</option>
+        <option value="youtube">YouTube</option>
+      </select>
+      <button onclick="search()">ابحث</button>
+    </div>
+  </div>
+  <iframe id="results"></iframe>  <script>
+    function search() {
+      let q = document.getElementById("query").value;
+      let engine = document.getElementById("engine").value;
+      let url = "";
+
+      if (engine === "google") {
+        url = "https://www.google.com/search?q=" + encodeURIComponent(q);
+      } else if (engine === "wikipedia") {
+        url = "https://ar.wikipedia.org/wiki/" + encodeURIComponent(q);
+      } else if (engine === "youtube") {
+        url = "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+      }
+
+      if (q.trim() !== "") {
+        document.getElementById("results").src = url;
+      }
+    }
+  </script></body>
+</html>
